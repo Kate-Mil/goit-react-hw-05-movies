@@ -1,27 +1,33 @@
 // import { getMovieById } from 'services/getMovie-api';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Layout';
 export const App = () => {
-  // const query = 'Fast X'; // Замените 'Название фильма' на фактический запрос
-
-  // async function fetchData() {
-  //   try {
-  //     const data = await getMovieByQueury(query);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-  // const movieId = '755679';
-
-  // async function fetchData() {
-  //   try {
-  //     const data = await getMovieById(movieId);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // fetchData();
-
-  return <></>;
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<div>Home</div>} />
+          <Route path="/movies" element={<div>Movies</div>} />
+          <Route path="/movies/:movieId" element={<div>MovieDetails</div>}>
+            <Route path="cast" element={<div>Cast</div>} />
+            <Route path="reviews" element={<div>Reviews</div>} />
+          </Route>
+          <Route path="*" element={<div>Not Found</div>} />
+        </Route>
+      </Routes>
+    </div>
+  );
 };
+
+// const movieId = '755679';
+
+// async function fetchData() {
+//   try {
+//     const data = await getMovieById(movieId);
+//     console.log(data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// fetchData();
