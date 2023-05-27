@@ -1,4 +1,5 @@
 // import { getMovieById } from 'services/getMovie-api';
+import Home from 'pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 export const App = () => {
@@ -6,7 +7,7 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<div>Home</div>} />
+          <Route index element={<Home />} />
           <Route path="/movies" element={<div>Movies</div>} />
           <Route path="/movies/:movieId" element={<div>MovieDetails</div>}>
             <Route path="cast" element={<div>Cast</div>} />
