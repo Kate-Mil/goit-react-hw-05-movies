@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link, Outlet } from 'react-router-dom';
 
 const MovieInfo = ({
   poster_path,
@@ -24,6 +25,19 @@ const MovieInfo = ({
       {genres.map(item => (
         <p key={item.id}>{item.name}</p>
       ))}
+      <div>
+        <h2>Additional information</h2>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            {' '}
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </div>
     </>
   );
 };
