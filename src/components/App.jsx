@@ -1,7 +1,8 @@
 // import { getMovieById } from 'services/getMovie-api';
 import Home from 'pages/Home';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './Layout';
+import Layout from './Layout/Layout';
+
 export const App = () => {
   return (
     <div>

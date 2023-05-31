@@ -7,8 +7,9 @@ axios.defaults.headers.common[
 const API_KEY = `2041cbb0afcc2edc3eb1fa3607b6d4a0`;
 
 export const getTrendingMovie = async () => {
-  const response = await axios.get(`trending/movie/day?api_key=${API_KEY}`);
-  return response.data;
+  const { data } = await axios.get(`trending/movie/day?api_key=${API_KEY}`);
+  const { results } = data;
+  return results;
 };
 
 export const getMovieByQueury = async query => {

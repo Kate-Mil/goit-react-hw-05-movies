@@ -1,24 +1,36 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getTrendingMovie } from '../services/getMovie-api';
+import MoviesList from 'components/MoviesList/MoviesList';
+import Loader from 'components/Loader/Loader';
 
 const Home = () => {
+  const [movies, setMovies] = useState([]);
+  const [isloading, setIsloading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     async function fetchData() {
+      setIsloading(true);
       try {
         const data = await getTrendingMovie();
-        console.log(data);
+        setMovies(data);
       } catch (error) {
-        console.error(error);
+        setError(error.message);
+      } finally {
+        setIsloading(false);
       }
     }
 
     fetchData();
-  });
+  }, []);
 
   return (
-    <ul>
-      <li>ewew</li>
-    </ul>
+    <>
+      <h1>Trending films</h1>
+
+      <MoviesList movies={movies} />
+      {isloading && <Loader />}
+    </>
   );
 };
 
