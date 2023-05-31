@@ -13,10 +13,11 @@ export const getTrendingMovie = async () => {
 };
 
 export const getMovieByQueury = async query => {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `search/movie?api_key=${API_KEY}&query=${query}`
   );
-  return response.data;
+  const { results } = data;
+  return results;
 };
 
 export const getMovieById = async movieId => {
