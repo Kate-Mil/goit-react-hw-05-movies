@@ -21,8 +21,24 @@ export const getMovieByQueury = async query => {
 };
 
 export const getMovieById = async movieId => {
-  const response = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
-  return response.data;
+  const { data } = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
+
+  const {
+    poster_path,
+    original_title,
+    overview,
+    genres,
+    release_date,
+    vote_average,
+  } = data;
+  return {
+    poster_path,
+    original_title,
+    overview,
+    genres,
+    release_date,
+    vote_average,
+  };
 };
 
 export const getMovieCredits = async movieId => {

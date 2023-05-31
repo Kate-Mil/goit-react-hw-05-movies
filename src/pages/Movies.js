@@ -20,7 +20,6 @@ const Movies = () => {
       setIsloading(true);
       try {
         const data = await getMovieByQueury(query);
-        console.log(data);
         setMovies(data);
       } catch (error) {
         setError(error.message);
@@ -35,7 +34,7 @@ const Movies = () => {
   return (
     <>
       <SearchForm />
-      <MoviesList movies={movies} />
+      {movies.length > 0 && <MoviesList movies={movies} />}
       {error && <p>{error.message}</p>}
       {isloading && <Loader />}
     </>
