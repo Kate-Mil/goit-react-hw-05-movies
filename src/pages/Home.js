@@ -29,6 +29,7 @@ const Home = () => {
       <h1>Trending films</h1>
 
       <MoviesList movies={movies} />
+      {error && <p>{error.message}</p>}
       {isloading && <Loader />}
     </>
   );
