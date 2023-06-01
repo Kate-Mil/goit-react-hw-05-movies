@@ -42,15 +42,17 @@ export const getMovieById = async movieId => {
 };
 
 export const getMovieCredits = async movieId => {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `movie/${movieId}/credits?api_key=${API_KEY}`
   );
-  return response.data;
+  const { cast } = data;
+  return cast;
 };
 
 export const getMovieReviews = async movieId => {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `movie/${movieId}/reviews?api_key=${API_KEY}`
   );
-  return response.data;
+  const { results } = data;
+  return results;
 };

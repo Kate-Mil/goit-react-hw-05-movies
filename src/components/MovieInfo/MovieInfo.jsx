@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link, Outlet } from 'react-router-dom';
+import formatDate from '../../helpers/formatDate';
 
 const MovieInfo = ({
   poster_path,
@@ -16,7 +17,7 @@ const MovieInfo = ({
         alt={original_title}
       />
       <h1>
-        {original_title} {release_date}
+        {original_title} ({formatDate(release_date)})
       </h1>
       <p>User Score: {vote_average * 10}%</p>
       <h2>Overview</h2>
@@ -26,7 +27,7 @@ const MovieInfo = ({
         <p key={item.id}>{item.name}</p>
       ))}
       <div>
-        <h2>Additional information</h2>
+        <h3>Additional information</h3>
         <ul>
           <li>
             <Link to="cast">Cast</Link>
