@@ -29,7 +29,7 @@ const Cast = () => {
   return (
     <>
       <ul>
-        {cast
+        {cast.length > 0
           ? cast.map(({ profile_path, id, name, character }) => {
               return (
                 <li key={id}>
@@ -47,7 +47,7 @@ const Cast = () => {
                 </li>
               );
             })
-          : 'there is no reviews'}
+          : 'there is no cast information'}
       </ul>
       {error && <p>{error.message}</p>}
       {isloading && <Loader />}

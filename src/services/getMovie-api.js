@@ -45,14 +45,17 @@ export const getMovieCredits = async movieId => {
   const { data } = await axios.get(
     `movie/${movieId}/credits?api_key=${API_KEY}`
   );
-  const { cast } = data;
-  return cast;
+  return data.cast.map(({ profile_path, id, name, character }) => {
+    return { profile_path, id, name, character };
+  });
 };
 
 export const getMovieReviews = async movieId => {
   const { data } = await axios.get(
     `movie/${movieId}/reviews?api_key=${API_KEY}`
   );
-  const { results } = data;
-  return results;
+
+  return data.results.map(({ author, content, id }) => {
+    return { author, content, id };
+  });
 };
