@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/getMovie-api';
 import Loader from 'components/Loader/Loader';
+import defaultPhoto from '../../pictures/defaultPhoto.jpg';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -14,7 +15,6 @@ const Cast = () => {
       setIsloading(true);
       try {
         const data = await getMovieCredits(movieId);
-        console.log(data);
         setCast(data);
       } catch (error) {
         setError(error.message);
@@ -33,14 +33,15 @@ const Cast = () => {
           ? cast.map(({ profile_path, id, name, character }) => {
               return (
                 <li key={id}>
-                  <img
-                    src={
-                      profile_path
-                        ? `https://image.tmdb.org/t/p/w200${profile_path}`
-                        : `N/A`
-                    }
-                    alt={name}
-                  />
+                  {profile_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+                      alt={name}
+                    />
+                  ) : (
+                    <img src={defaultPhoto} alt={name} />
+                  )}
+
                   <p>{name}</p>
                   <p>Character: {character}</p>
                 </li>

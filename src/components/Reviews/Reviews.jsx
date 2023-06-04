@@ -28,7 +28,7 @@ const Reviews = () => {
   return (
     <>
       <ul>
-        {review
+        {review.length > 0
           ? review.map(({ author, content, id }) => {
               return (
                 <li key={id}>
