@@ -5,6 +5,7 @@ export const TrandingList = styled.ul`
   display: flex;
   gap: 10px;
   flex-direction: column;
+  padding-left: 15px;
 `;
 
 export const TrandingItem = styled.li`
