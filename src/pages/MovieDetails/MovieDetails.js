@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { getMovieById } from '../services/getMovie-api';
+import { getMovieById } from '../../services/getMovie-api';
 import MovieInfo from 'components/MovieInfo/MovieInfo';
 import Loader from 'components/Loader/Loader';
 import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
+import { Section } from 'components/Section.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -30,12 +31,12 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <>
+    <Section>
       <GoBackBtn path={backLink.current} />
       {movie && <MovieInfo {...movie} />}
       {error && <p>{error.message}</p>}
       {isloading && <Loader />}
-    </>
+    </Section>
   );
 };
 

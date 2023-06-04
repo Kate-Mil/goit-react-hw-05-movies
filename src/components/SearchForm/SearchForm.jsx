@@ -1,5 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
 import { useRef } from 'react';
+import {
+  SearchFormButton,
+  SearchFormButtonLabel,
+  SearchFormInput,
+  SearchFormWrapper,
+} from './SearchForm.styled';
 
 const SearchForm = () => {
   const [, setSearchParams] = useSearchParams();
@@ -17,12 +23,12 @@ const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} ref={formRef} class="form">
-      <button type="submit" class="button">
-        <span class="button-label">Search</span>
-      </button>
+    <SearchFormWrapper onSubmit={handleSubmit} ref={formRef}>
+      <SearchFormButton type="submit">
+        <SearchFormButtonLabel>Search</SearchFormButtonLabel>
+      </SearchFormButton>
 
-      <input
+      <SearchFormInput
         class="input"
         type="text"
         autocomplete="off"
@@ -30,7 +36,7 @@ const SearchForm = () => {
         autofocus
         placeholder="Search movies"
       />
-    </form>
+    </SearchFormWrapper>
   );
 };
 

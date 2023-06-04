@@ -1,6 +1,15 @@
 import PropTypes from 'prop-types';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import formatDate from '../../helpers/formatDate';
+import {
+  AddInfoItem,
+  AddInfoList,
+  AdditionalInfoBlock,
+  ContainerWrapper,
+  GenresList,
+  MainInfoBlock,
+  StyledLink,
+} from './MovieInfo.styled';
 
 const MovieInfo = ({
   poster_path,
@@ -12,33 +21,41 @@ const MovieInfo = ({
 }) => {
   return (
     <>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        alt={original_title}
-      />
-      <h1>
-        {original_title} ({formatDate(release_date)})
-      </h1>
-      <p>User Score: {vote_average * 10}%</p>
-      <h2>Overview</h2>
-      <p>{overview}</p>
-      <h2>genres</h2>
-      {genres.map(item => (
-        <p key={item.id}>{item.name}</p>
-      ))}
-      <div>
-        <h3>Additional information</h3>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
+      <ContainerWrapper>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={original_title}
+        />
+        <MainInfoBlock>
+          <h1>
+            {original_title} ({formatDate(release_date)})
+          </h1>
+          <p>User Score: {vote_average * 10}%</p>
+          <h2>Overview</h2>
+          <p>{overview}</p>
+          <h2>Genres</h2>
+          <GenresList>
+            {genres.map(item => (
+              <li key={item.id}>
+                <p>{item.name}</p>
+              </li>
+            ))}
+          </GenresList>
+        </MainInfoBlock>
+      </ContainerWrapper>
+      <AdditionalInfoBlock>
+        <h2>Additional information</h2>
+        <AddInfoList>
+          <AddInfoItem>
+            <StyledLink to="cast">Cast</StyledLink>
+          </AddInfoItem>
+          <AddInfoItem>
             {' '}
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
+            <StyledLink to="reviews">Reviews</StyledLink>
+          </AddInfoItem>
+        </AddInfoList>
         <Outlet />
-      </div>
+      </AdditionalInfoBlock>
     </>
   );
 };

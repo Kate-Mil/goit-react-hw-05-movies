@@ -16,7 +16,7 @@ export const TrandingItem = styled.li`
 
 export const StyledLink = styled(Link)`
   font-size: 15px;
-  color: #1000ff;
+  color: #0000e6;
   border-bottom: none;
 
   :hover,

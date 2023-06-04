@@ -4,6 +4,7 @@ import { getMovieByQueury } from 'services/getMovie-api';
 import SearchForm from 'components/SearchForm/SearchForm';
 import Loader from 'components/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
+import { Container, Section } from 'components/Section.styled';
 
 const Movies = () => {
   const [searchParams] = useSearchParams();
@@ -32,12 +33,14 @@ const Movies = () => {
   }, [query]);
 
   return (
-    <>
-      <SearchForm />
-      {movies.length > 0 && <MoviesList movies={movies} />}
-      {error && <p>{error.message}</p>}
-      {isloading && <Loader />}
-    </>
+    <Section>
+      <Container>
+        <SearchForm />
+        {movies.length > 0 && <MoviesList movies={movies} />}
+        {error && <p>{error.message}</p>}
+        {isloading && <Loader />}
+      </Container>
+    </Section>
   );
 };
 
