@@ -6,7 +6,12 @@ export default function Loader() {
       height={80}
       width={80}
       color="#808080"
-      wrapperStyle={{ margin: 'auto' }}
+      wrapperStyle={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}
       wrapperClass=""
       visible={true}
       ariaLabel="oval-loading"

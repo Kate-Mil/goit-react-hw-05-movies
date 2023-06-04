@@ -1,27 +1,28 @@
 import defaultPhoto from '../../pictures/defaultPhoto.jpg';
+import { CastTitle, Img, List } from './CastInfo.styled';
 
 export default function CastInfo({ cast }) {
   return (
-    <ul>
+    <List>
       {cast.length > 0
         ? cast.map(({ profile_path, id, name, character }) => {
             return (
               <li key={id}>
                 {profile_path ? (
-                  <img
+                  <Img
                     src={`https://image.tmdb.org/t/p/w200${profile_path}`}
                     alt={name}
                   />
                 ) : (
-                  <img src={defaultPhoto} width="200" alt={name} />
+                  <Img src={defaultPhoto} width="200" alt={name} />
                 )}
 
-                <p>{name}</p>
+                <CastTitle>{name}</CastTitle>
                 <p>Character: {character}</p>
               </li>
             );
           })
         : 'there is no cast information'}
-    </ul>
+    </List>
   );
 }

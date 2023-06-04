@@ -1,16 +1,18 @@
+import { List, ReviewTitle } from './Reviews.styled';
+
 export default function ReviewsInfo({ review }) {
   return (
-    <ul>
+    <List>
       {review.length > 0
         ? review.map(({ author, content, id }) => {
             return (
               <li key={id}>
-                <h3>Author: {author}</h3>
+                <ReviewTitle>Author: {author}</ReviewTitle>
                 <p>{content}</p>
               </li>
             );
           })
         : 'there is no reviews'}
-    </ul>
+    </List>
   );
 }

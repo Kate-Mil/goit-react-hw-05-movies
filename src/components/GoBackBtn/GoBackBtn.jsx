@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { StyledLink } from './GoBackBtn.styled';
 
 export const GoBackBtn = ({ path }) => {
-  return <Link to={path}>go back</Link>;
+  return <StyledLink to={path}>Go back</StyledLink>;
 };
 
 GoBackBtn.propTypes = {

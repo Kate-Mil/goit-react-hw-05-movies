@@ -35,11 +35,13 @@ const MovieInfo = ({
           <p>{overview}</p>
           <h2>Genres</h2>
           <GenresList>
-            {genres.map(item => (
-              <li key={item.id}>
-                <p>{item.name}</p>
-              </li>
-            ))}
+            {genres.length > 0
+              ? genres.map(item => (
+                  <li key={item.id}>
+                    <p>{item.name}</p>
+                  </li>
+                ))
+              : 'there are no genres'}
           </GenresList>
         </MainInfoBlock>
       </ContainerWrapper>
@@ -54,8 +56,8 @@ const MovieInfo = ({
             <StyledLink to="reviews">Reviews</StyledLink>
           </AddInfoItem>
         </AddInfoList>
-        <Outlet />
       </AdditionalInfoBlock>
+      <Outlet />
     </>
   );
 };
