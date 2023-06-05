@@ -8,14 +8,14 @@ export default function CastInfo({ cast }) {
         ? cast.map(({ profile_path, id, name, character }) => {
             return (
               <li key={id}>
-                {profile_path ? (
-                  <Img
-                    src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-                    alt={name}
-                  />
-                ) : (
-                  <Img src={defaultPhoto} width="200" alt={name} />
-                )}
+                <Img
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w200${profile_path}`
+                      : defaultPhoto
+                  }
+                  alt={name}
+                />
 
                 <CastTitle>{name}</CastTitle>
                 <p>Character: {character}</p>

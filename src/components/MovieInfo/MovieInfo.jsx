@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import formatDate from '../../helpers/formatDate';
+import defaultPhoto from '../../pictures/defaultPhoto.jpg';
 import {
   AddInfoItem,
   AddInfoList,
@@ -23,7 +24,11 @@ const MovieInfo = ({
     <>
       <ContainerWrapper>
         <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : defaultPhoto
+          }
           alt={original_title}
         />
         <MainInfoBlock>
